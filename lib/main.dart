@@ -35,10 +35,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          ' ニュース (にゅーす)',
-          style: TextStyle(color: Colors.black),
+          'NewsApi',
+          // style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.cyan,
       ),
       body: FutureBuilder(
         future: client.getArticle(),
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
             List<Article>? articles = snapshot.data;
             return ListView.builder(
               itemCount: articles?.length,
-              itemBuilder: (context, index) => customeListTile(articles![index]),
+              itemBuilder: (context, index) => customeListTile(articles![index], context),
             );
           }
           return Center(child: CircularProgressIndicator());
